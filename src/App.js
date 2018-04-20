@@ -53,7 +53,10 @@ import { database } from "./firebase";
           />
           <br />
           <label htmlFor="text">text:</label>
-          <input type="text" ref={node => (this.text = node)} />
+          <input
+            type="text"
+            placeholder="text"
+            ref={node => (this.text = node)} />
           <br />
           <input type="submit" />
         </form>
@@ -71,3 +74,6 @@ import { database } from "./firebase";
        </div>
      );
    }
+}
+
+export default App;
