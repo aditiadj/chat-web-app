@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { database } from "./firebase";
+import './style.css';
 
  class App extends Component {
   constructor() {
@@ -48,17 +49,20 @@ import { database } from "./firebase";
           <label htmlFor="username">username:</label>
           <input
             type="text"
-            placeholder="username"
+            placeholder="your name"
             ref={node => (this.username = node)}
           />
           <br />
           <label htmlFor="text">text:</label>
           <input
             type="text"
-            placeholder="text"
-            ref={node => (this.text = node)} />
+            placeholder="your message"
+            ref={node => (this.text = node)}
+          />
           <br />
-          <input type="submit" />
+          <br />
+          <button type="submit">Send</button>
+          {/* <input type="submit" /> */}
         </form>
 
         <ul>

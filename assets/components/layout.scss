@@ -1,0 +1,29 @@
+label {
+  font-family: $font-bellefair;
+  font-size: $font-medium;
+}
+
+input {
+  font-family: $font-quicksand;
+}
+
+body {
+  text-align: $body-center;
+}
+
+button {
+  @extend %button-chat;
+  &:hover {
+    color: grey;
+  }
+}
+
+//nesting
+ul {
+  li {
+      @extend %ul-style;
+      &:hover {
+        color: grey;
+      }
+  }
+}
