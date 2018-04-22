@@ -45,6 +45,15 @@ import './style.css';
    render() {
      return (
        <div>
+        <h1>Chat Room Firebase</h1>
+        <ul className="chat-thread">
+         {this.state.messages.map(message => (
+           <li key={message.id}>
+             {message.text}
+             <small style={{ color: "gray" }}> by {message.username}</small>
+           </li>
+         ))}
+        </ul>
         <form onSubmit={this.onAddMessage}>
           <label htmlFor="username">username:</label>
           <input
@@ -62,19 +71,7 @@ import './style.css';
           <br />
           <br />
           <button type="submit">Send</button>
-          {/* <input type="submit" /> */}
         </form>
-
-        <ul>
-          {this.state.messages.map(message => (
-            <li key={message.id}>
-              {`"`}
-              {message.text}
-              {`"`}
-              <small style={{ color: "gray" }}> by {message.username}</small>
-            </li>
-          ))}
-        </ul>
        </div>
      );
    }
