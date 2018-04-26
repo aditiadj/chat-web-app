@@ -19,11 +19,12 @@ import './style.css';
       .orderByKey()
       .limitToLast(10);
 
-    messagesRef.on("child_added", snapshot => {
+    messagesRef.on("child_added", capture => {
       const message = {
-        username: snapshot.val().username,
-        text: snapshot.val().text,
-        id: snapshot.key
+        name: capture.val().name,
+        text: capture.val().text,
+        time: '',
+        id: capture.key
       };
 
       this.setState(prevState => ({
@@ -36,8 +37,9 @@ import './style.css';
     event.preventDefault();
 
     database.ref("messages").push({
-      username: this.username.value,
-      text: this.text.value
+      name: this.name.value,
+      text: this.text.value,
+      time: new Date().toLocaleTimeString('en-US')
     });
 
     this.text.value = "";
@@ -45,33 +47,35 @@ import './style.css';
    render() {
      return (
        <div>
-        <h1>Chat Room Firebase</h1>
+        <h1>Web Chat</h1>
         <ul className="chat-thread">
          {this.state.messages.map(message => (
            <li key={message.id}>
              {message.text}
-             <small style={{ color: "gray" }}> by {message.username}</small>
+             <small style={{ color: "gray" }}> by {message.name}</small>
+             <small style={{ color: "gray" }}> {message.time}</small>
            </li>
          ))}
         </ul>
-        <form onSubmit={this.onAddMessage}>
-          <label htmlFor="username">username:</label>
-          <input
-            type="text"
-            placeholder="your name"
-            ref={node => (this.username = node)}
-          />
-          <br />
-          <label htmlFor="text">text:</label>
-          <input
-            type="text"
-            placeholder="your message"
-            ref={node => (this.text = node)}
-          />
-          <br />
-          <br />
-          <button type="submit">Send</button>
-        </form>
+        <br/>
+        <br/>
+          <div className="form-container">
+            <form onSubmit={this.onAddMessage}>
+              <input
+                type="text"
+                placeholder="Name"
+                ref={node => (this.name = node)}
+              />
+              <input
+                type="text"
+                placeholder="Message"
+                ref={node => (this.text = node)}
+              />
+              <br />
+              <br />
+              <button type="submit">Send</button>
+            </form>
+          </div>
        </div>
      );
    }

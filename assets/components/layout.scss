@@ -109,8 +109,6 @@ ul {
 	color: #0AD5C1;
 }
 
-
-
 .chat-thread li:nth-child(odd):after {
 	border-right: $chat-thread-msg-arrow-size solid transparent;
 	right: -$chat-thread-msg-arrow-size;
@@ -124,7 +122,6 @@ ul {
 	margin-left: $chat-thread-offset;
 	color: #0EC879;
 }
-
 
 .chat-thread li:nth-child(even):after {
 	border-left: $chat-thread-msg-arrow-size solid transparent;
